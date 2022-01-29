@@ -12,7 +12,7 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-    user_data = pickle.loads(open('user_data (1)', "rb").read())
+    user_data = pickle.loads(open('user_data (5)', "rb").read())
     studying=request.form.get('studying')
     names=[]
     places=[]
@@ -31,8 +31,8 @@ def predict():
             rawBytes.seek(0)
             img_base64 = base64.b64encode(rawBytes.read())
             images.append(str(img_base64))
-        result={'name':names,'place':places,'branch':branches,'image':images,'year':year}
-        return jsonify(result)
+    result={'name':names,'place':places,'branch':branches,'image':images,'year':year}
+    return jsonify(result)
 
 
 if __name__=='__main__':
